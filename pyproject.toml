@@ -1,6 +1,6 @@
 [project]
 name = "simple-rolling-window"
-version = "0.1.0"
+version = "0.1.1"
 description = "Tracks mean, peak, and trough over the last N values of a numeric stream."
 requires-python = ">=3.10"
 dependencies = []
