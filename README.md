@@ -44,3 +44,10 @@ The trade-off: `peak()` and `trough()` scan the window on every call, which is O
 Calling `mean()`, `peak()` or `trough()` on an empty window raises `ValueError`. Returning `0.0` for an empty window would silently poison any downstream average, so the library refuses instead.
 
 `push()` rejects booleans even though `bool` is a subclass of `int` in Python. Passing `True` as `1` is almost always a bug at the call site, and failing loudly is cheaper than debugging a wrong mean later.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
